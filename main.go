@@ -4,18 +4,22 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
-func testHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Test reached\n")
-}
+type myHandler struct{}
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Go\n")
+func (this myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello Go!\n")
 }
 
 func main() {
-	http.HandleFunc("/", rootHandler)
-	http.HandleFunc("/test", testHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	server := http.Server{
+		Addr: ":8080",
+		Handler: &myHandler{},
+		ReadTimeout: 3 * time.Second,
+		WriteTimeout: 3 * time.Second,
+	}
+	log.Fatal(server.ListenAndServe())
 }
