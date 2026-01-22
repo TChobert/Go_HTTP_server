@@ -8,6 +8,8 @@ A simple implementation of a web server in Go, just for learning and experimenti
 
 https://pkg.go.dev/net/http
 
+https://go.dev/tour/list
+
 # Useful tutorials
 
 https://blog.logrocket.com/creating-a-web-server-with-golang/
