@@ -15,6 +15,9 @@ func main() {
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello from Go server with chi!\n")
 	})
+	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello from test location!\n");
+	})
 	server := http.Server{
 		Addr: ":8080",
 		Handler: r,
