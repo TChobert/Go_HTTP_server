@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+func RunTLS(srv *http.Server, certPath string, keyPath string) error {
+	return srv.ListenAndServeTLS(certPath, keyPath)
+}
+
 func NewServer(router http.Handler) *http.Server {
 
 	return &http.Server{

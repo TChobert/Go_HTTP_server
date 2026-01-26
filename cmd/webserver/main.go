@@ -9,10 +9,15 @@ import (
 
 func main() {
 
-	r := router.NewRouter()
-	server := server.NewServer(r)
+	rout := router.NewRouter()
+	srv := server.NewServer(rout)
 
 	certPath := os.Getenv("TLS_CERT_PATH")
 	keyPath := os.Getenv("TLS_KEY_PATH")
-	log.Fatal(server.ListenAndServeTLS(certPath, keyPath))
+	go func() {
+		if err := server.RunTLS(srv, certPath, keyPath); err != nil {
+			log.Fatal(err)
+		}
+	} ()
+	select {}
 }
