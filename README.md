@@ -1,8 +1,8 @@
-# Go_webserver
+# Go_HTTPS_server
 
 ⚠️⚠️ IN PROGRESS ⚠️⚠️
 
-A simple implementation of a web server in Go, for learning and experimenting.
+A simple implementation of a HTTPS web server in Go, for learning and experimenting.
 
 # Objectives / pedagogical approach
 
